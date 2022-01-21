@@ -6,31 +6,22 @@ const app = Vue.createApp({
       boxCSelected: false,
     };
   },
-  watch: {
-    boxASelected() {
-      const that = this;
-      setTimeout(() => {
-        that.boxASelected = false;
-      }, 500);
+  computed: {
+    boxAClasses() {
+      return { active: this.boxASelected };
     },
-    boxBSelected() {
-      const that = this;
-      setTimeout(() => {
-        that.boxBSelected = false;
-      }, 500);
+    boxBClasses() {
+      return { active: this.boxBSelected };
     },
-    boxCSelected() {
-      const that = this;
-      setTimeout(() => {
-        that.boxCSelected = false;
-      }, 500);
+    boxCClasses() {
+      return { active: this.boxCSelected };
     },
   },
   methods: {
     boxSelected(box) {
       const selected = `box${box}Selected`;
 
-      this[`${selected}`] = true;
+      this[`${selected}`] = !this[`${selected}`];
     },
   },
 });
